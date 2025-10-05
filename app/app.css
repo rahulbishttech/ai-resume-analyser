@@ -2,6 +2,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+
+/* setting up theme colors from figma design*/
 @theme {
   --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -18,11 +21,14 @@
   --color-badge-yellow-text: #73321b;
 }
 
+
+/* resetting default elements */
 html,
 body {
   @apply bg-white;
 }
 
+/* setting up how some elements look on our website */
 main {
   @apply min-h-screen pt-10;
 }
@@ -49,6 +55,8 @@ form {
   @apply flex flex-col items-start gap-8 w-full;
 }
 
+
+/*  */
 @layer components {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
