@@ -1,4 +1,4 @@
-import Navbar from "~/components/Navbar";
+import Navbar from "~/components/Navbar";  // ~ path is configed on tsconfig.json 
 import type { Route } from "./+types/home";
 import { resumes } from "~/constants";
 import ResumeCard from "~/components/ResumeCard";
