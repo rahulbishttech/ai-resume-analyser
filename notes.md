@@ -99,4 +99,15 @@ onFileSelect?: (file: File | null) => void; // optional prop that is a function 
     - create custom Category component in the same file 
     - create ScoreBadge component and imported in Summary.tsx file
 
-- make ATS component
+- make ATS, Accordian, Details component
+
+---------------------------------------------------------------------
+-------------------------------------------------
+8. Fetch Real Data on the Homepage 
+- create loadResume function using useEffect in ResumeCard.tsx
+- you can also, only upload the resume, without putting the title, description etc.. so for that 
+  add the conditions so that application doesn't break
+  (to conditionally show the companyName, jobTitle , resumeUrl in Resume Card) - if they doesn't exist show heading "Resume"
+
+- fetch all the resumes on the home page 
+- make some 
