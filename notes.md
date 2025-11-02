@@ -110,4 +110,11 @@ onFileSelect?: (file: File | null) => void; // optional prop that is a function 
   (to conditionally show the companyName, jobTitle , resumeUrl in Resume Card) - if they doesn't exist show heading "Resume"
 
 - fetch all the resumes on the home page 
-- make some 
+- make some conditional checks like
+1. if No resumes found. Upload your first resume to get feedback.
+2. if loadingResumes is true, show a loading image
+3. if resume.length===0 , show a button to uplaod the resume (for first time users)
+
+---------------------------------------------------------------------
+-------------------------------------------------
+9. Wipe App Data
