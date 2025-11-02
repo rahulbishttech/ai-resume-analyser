@@ -89,7 +89,14 @@ onFileSelect?: (file: File | null) => void; // optional prop that is a function 
 - meta data for resume route/url.
 - make the feedback page layout 
 - redirect user if he is not loggedin 
+- make the additional components for showing details , these 3 components (Summary.tsx, ATS.tsx,Details.tsx ) and show them in resume.tsx
 
 ---------------------------------------------------------------------
 -------------------------------------------------
-7. make the additional components for showing details , these 3 components (Summary.tsx, ATS.tsx,Details.tsx ) and show them in resume.tsx
+7. Resume Feedback Components
+- make summary component 
+    - ScoreGauge component from description 
+    - create custom Category component in the same file 
+    - create ScoreBadge component and imported in Summary.tsx file
+
+- make ATS component
