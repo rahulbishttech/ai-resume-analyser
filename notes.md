@@ -51,7 +51,7 @@
     } 
 
 - normal structure of component function
-varibles => functions => return statement
+varibles => useEffect(hooks) => functions => return statement
 
 - (e:FormEvent<HTMLFormElement> )  // check chatgpt project (ai_resume_doubts)
 - create Form and FileUploader.tsx component 
@@ -76,3 +76,20 @@ onFileSelect?: (file: File | null) => void; // optional prop that is a function 
 - in upload.tsx -> make handleAnalyse to upload the file in puter storage 
   also create convertPdfToImage(File) function & copy it's code new file lib -> pdf2img.ts  from the desc link
 - generate a unique id for ai analysis (uuid)
+- AI feedback integration.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+6. Resume feedback Page
+- make a new route with a name as resume.tsx 
+    - configure the route in routes.ts
+- extract the id (dynamic parameter) in resume.tsx using userParams()
+    - redirect user with it's uuid like this (navigate())
+    - you may have to reload the server for new route to be recognized.
+
+- meta data for resume route/url.
+- make the feedback page layout 
+- redirect user if he is not loggedin 
+
+---------------------------------------------------------------------
+-------------------------------------------------
+7. make the additional components for showing details , these 3 components (Summary.tsx, ATS.tsx,Details.tsx ) and show them in resume.tsx

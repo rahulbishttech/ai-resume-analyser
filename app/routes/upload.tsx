@@ -5,7 +5,8 @@ import { usePuterStore } from "~/lib/puter";
 import { convertPdfToImage, type PdfConversionResult } from "~/lib/pdf2img";
 import { generateUUID } from "~/lib/utils";
 import { prepareInstructions } from "~/constants";
-
+import { Navigate, useNavigate } from "react-router";
+// import navigate
 
 
 
@@ -18,6 +19,8 @@ const Upload = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState("");
     const [file, setFile] = useState<File | null>(null);  // useState<Type>(initialValue)
+
+    const navigate = useNavigate();
 
     // functions
 
@@ -68,11 +71,12 @@ const Upload = () => {
         // convert to js objects and assign to data -> feedback
         data.feedback = JSON.parse(feedbackText);
 
-        await kv.set(`resume :${uuid}`, JSON.stringify(data));
+        await kv.set(`resume:${uuid}`, JSON.stringify(data));
         setStatusText("Analysis complete, redirecting...");
 
+        // redirect the user 
         console.log(data);
-
+        navigate(`/resume/${uuid}`);
 
     }
 
@@ -184,5 +188,3 @@ export default Upload;
 //   jobDescription: jobDesc     // value from jobDesc variable
 // }    
 
-
-// (*3)

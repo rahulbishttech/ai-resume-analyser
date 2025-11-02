@@ -29,7 +29,6 @@ export default ResumeCard
 
 
 
-
 // 1. Destructures the resume prop:
 // {resume:{id,companyName,jobTitle,feedback}}
 // This means the function expects a prop called resume, and it immediately extracts the properties id, companyName, jobTitle, and feedback from it.
