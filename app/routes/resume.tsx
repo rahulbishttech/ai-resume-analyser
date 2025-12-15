@@ -42,7 +42,8 @@ const Resume = () => {
             const data = JSON.parse(resume);
 
 
-            // you can read files (like pdf, img) => by using blob
+            // you can read files (like pdf
+            // , img) => by using blob
             // files from puter cloud storage returned as blob 
             const resumeBlob = await fs.read(data.resumePath);
             if(!resumeBlob) return;
