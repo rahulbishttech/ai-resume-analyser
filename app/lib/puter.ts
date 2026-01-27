@@ -2,9 +2,27 @@ import { create } from "zustand";
 
 
 
-// The code declares what features are available on window.puter, 
-// so TypeScript knows what you can use. This helps your app talk to Puter.js safely, 
-// without errors, and lets you use autocomplete and type checking
+// This block below is a type definition that tells TypeScript: 
+
+// (only giving info to ts , isn't creating those methods )
+// "Puter.js will add a puter object to the Window"
+// "Here's exactly what methods exist"
+// "Here's what each method takes as input"
+// "Here's what each method returns"
+// It's like giving TypeScript a blueprint before Puter.js even loads, so your IDE can help you write correct code.
+
+
+// without this
+// TypeScript has NO idea what window.puter is
+// const user = await window.puter.auth.getUser(); // RED ERROR - doesn't exist!
+// No autocomplete
+// No error catching
+
+// with this 
+// TypeScript KNOWS what window.puter is
+// const user = await window.puter.auth.getUser(); // ✅ Works perfectly
+// Autocomplete shows all methods
+// Catches typos immediately
 declare global {
   interface Window {
     puter: {
@@ -48,10 +66,8 @@ declare global {
 }
 
 
-// PuterStore used by zustand to define the store,
-// a place accessible from anywhere in the app
-// where we can store our data 
-// in this case we are storing puter functions
+
+// zustand (38:30 - 41:41 )
 interface PuterStore {
   isLoading: boolean;
   error: string | null;
