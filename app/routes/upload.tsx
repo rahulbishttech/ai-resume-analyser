@@ -10,7 +10,6 @@ import { Navigate, useNavigate } from "react-router";
 
 
 
-
 const Upload = () => {
 
     const { auth, isLoading, fs, ai, kv } = usePuterStore();  // fs = file storage, kv = key value storage functions
@@ -18,22 +17,22 @@ const Upload = () => {
     // variables
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState("");
-    const [file, setFile] = useState<File | null>(null);  // useState<Type>(initialValue)
+    const [file, setFile] = useState<File | null>(null);  // this is the file // useState<Type>(initialValue)
 
     const navigate = useNavigate();
 
     // functions
-
+    // async function because we have to wait for the response
     const handleAnalyze = async ({ companyName, jobTitle, jobDesc, file }: { companyName: string, jobTitle: string, jobDesc: string, file: File }) => {
         setIsProcessing(true);
         setStatusText("Uploading the file...");
-        const uploadedFile = await fs.upload([file]);
+        const uploadedFile = await fs.upload([file]); // array containing one single file
         if (!uploadedFile) return setStatusText("Error: Failed to upload File"); // Returns the result of the function call here
 
         setStatusText("Converting to image...");
 
         const imageFile: PdfConversionResult = await convertPdfToImage(file);
-        console.log(imageFile)
+        console.log("imageFile:", imageFile);
 
         if (!imageFile.file) return setStatusText("Error: failed to convert PDF to Image");
 
@@ -82,7 +81,7 @@ const Upload = () => {
 
     const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
         console.log("form submitted");
-        e.preventDefault();
+        e.preventDefault(); // stop the reload on form submit
         const form = e.currentTarget.closest("form");
         if (!form) return;
 

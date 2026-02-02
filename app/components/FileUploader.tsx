@@ -8,15 +8,18 @@ interface FileUploaderProps {
 
 const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
 
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+    // on drop of files -> Send the file to parent
     const onDrop = useCallback((acceptedFiles: File[]) => {
         // Do something with the files
         const file = acceptedFiles[0] || null;
+        setSelectedFile(file);
         onFileSelect?.(file);
     }, [onFileSelect]);
 
-
     const maxFileSize = 24 * 1024 * 1024; // 20 mb
-    const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone(
+    const { getRootProps, getInputProps, isDragActive } = useDropzone(
         {
             onDrop,
             multiple: false,
@@ -25,8 +28,8 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
         }
     )
 
-    const file = acceptedFiles[0] || null;
-
+    // gets the file that is set by onDrop function above, setSelectedFile(file);
+    const file = selectedFile;
 
     return (
         <div className='w-full gradient-border'>
@@ -49,8 +52,14 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                                         </p>
                                     </div>
                                 </div>
-                                <button className='p-2 cursor-pointer' onClick={(e)=>onFileSelect?.(null)}>
-                                    <img src="/icons/cross.svg" alt="remove" className='size-4'/>
+                                <button className='p-2 cursor-pointer'
+                                    onClick={
+                                        (e) => {
+                                            setSelectedFile(null);
+                                            onFileSelect?.(null)
+                                        }}
+                                >
+                                    <img src="/icons/cross.svg" alt="remove" className='size-4' />
                                 </button>
                             </div>
                         ) :
